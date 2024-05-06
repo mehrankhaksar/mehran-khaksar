@@ -1,3 +1,5 @@
+import ThemeProvider from "@/components/ThemeProvider";
+
 import "./globals.css";
 
 export const metadata = {
@@ -7,8 +9,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen flex flex-col">{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col">
+        <ThemeProvider defaultTheme="light" attribute="class">
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
