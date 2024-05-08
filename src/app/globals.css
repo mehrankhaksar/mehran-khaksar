@@ -59,3 +59,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.h1 {
+  @apply text-2xl;
+}
+
+.h1 {
+  @apply font-bold;
+}
