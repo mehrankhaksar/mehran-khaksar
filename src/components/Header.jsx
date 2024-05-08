@@ -32,9 +32,9 @@ const socials = [
 const Header = () => {
   return (
     <header className="pt-12">
-      <div className="sm:max-w-[500px] sm:mx-auto">
+      <div className="max-w-fit mx-auto">
         <div className="flex flex-col items-center relative">
-          <div className="absolute -top-5 left-10">
+          <div className="absolute -top-5 -left-5">
             <ThemeToggler />
           </div>
           <div className="flex flex-col items-center gap-2.5">
