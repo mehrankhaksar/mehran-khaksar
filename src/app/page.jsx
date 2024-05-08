@@ -1,6 +1,24 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+"use client";
+
+import { motion } from "framer-motion";
+
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 import { RiCheckboxCircleLine } from "@remixicon/react";
+
+const tabContentVariants = {
+  hidden: {
+    opacity: 0,
+    y: 35,
+  },
+  enter: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
 
 const tabs = ["skills", "projects"];
 
@@ -63,23 +81,32 @@ export default function Home() {
               </TabsTrigger>
             ))}
           </TabsList>
-          <TabsContent
-            className="grid grid-cols-2 sm:grid-cols-3 gap-5"
-            value="skills"
-          >
-            {skills.map((item, index) => (
-              <div className="flex gap-1.5" key={index}>
-                <RiCheckboxCircleLine className="text-primary" />
-                <div>
-                  <h4 className="h4 !leading-5">{item.skill}</h4>
-                  <span className="text-sm font-semibold text-muted-foreground">
-                    {item.level}
-                  </span>
+          <TabsContent value="skills">
+            <motion.div
+              className="grid grid-cols-2 sm:grid-cols-3 gap-5"
+              variants={tabContentVariants}
+            >
+              {skills.map((item, index) => (
+                <div className="flex gap-1.5" key={index}>
+                  <RiCheckboxCircleLine className="text-primary" />
+                  <div>
+                    <h4 className="h4 !leading-5">{item.skill}</h4>
+                    <span className="text-sm font-semibold text-muted-foreground">
+                      {item.level}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </motion.div>
           </TabsContent>
-          <TabsContent value="projects">Projects</TabsContent>
+          <TabsContent value="projects">
+            <motion.div
+              className="grid grid-cols-2 sm:grid-cols-3 gap-5"
+              variants={tabContentVariants}
+            >
+              Fuck
+            </motion.div>
+          </TabsContent>
         </Tabs>
       </div>
     </section>

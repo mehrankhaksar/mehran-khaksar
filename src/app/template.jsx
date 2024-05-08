@@ -11,6 +11,7 @@ const pageVariants = {
   enter: {
     opacity: 1,
     transition: {
+      when: "beforeChildren",
       type: "linear",
       delay: 0.25,
       duration: 0.5,
