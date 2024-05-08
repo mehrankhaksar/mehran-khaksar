@@ -1,25 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { Button } from "./ui/button";
+
 import {
   RiInstagramLine,
   RiLinkedinBoxLine,
   RiGithubLine,
+  RiDownloadLine,
+  RiWhatsappLine,
+  RiSkypeLine,
 } from "@remixicon/react";
 
 import ThemeToggler from "./ThemeToggler";
 
 const socials = [
   {
-    pathname: "",
+    pathname: "#",
     icon: <RiInstagramLine />,
   },
   {
-    pathname: "",
+    pathname: "#",
     icon: <RiLinkedinBoxLine />,
   },
   {
-    pathname: "",
+    pathname: "#",
     icon: <RiGithubLine />,
   },
 ];
@@ -48,7 +53,7 @@ const Header = () => {
               <span className="font-medium">Front-End Developer</span>
             </div>
           </div>
-          <div className="flex items-center gap-5 mt-2.5">
+          <div className="flex items-center gap-5 mt-2.5 mb-5">
             {socials.map((item, index) => (
               <Link
                 className="transition-colors hover:text-primary"
@@ -58,6 +63,39 @@ const Header = () => {
                 {item.icon}
               </Link>
             ))}
+          </div>
+          <div className="flex items-center gap-3">
+            <a download="" href="">
+              <Button
+                className="flex items-center gap-1.5 text-lg font-semibold p-6 dark:text-secondary-foreground"
+                type="button"
+              >
+                Download CV
+                <RiDownloadLine />
+              </Button>
+            </a>
+            <div className="flex items-center gap-1.5">
+              <a href="#">
+                <Button
+                  className="col-span-2 rounded-full"
+                  variant="secondary"
+                  size="icon"
+                  type="button"
+                >
+                  <RiWhatsappLine />
+                </Button>
+              </a>
+              <a href="#">
+                <Button
+                  className="rounded-full"
+                  variant="secondary"
+                  size="icon"
+                  type="button"
+                >
+                  <RiSkypeLine />
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,8 @@
 import ThemeProvider from "@/components/ThemeProvider";
 
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "Mehran Khaksar",
@@ -12,7 +14,9 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen flex flex-col">
         <ThemeProvider defaultTheme="light" attribute="class">
+          <Header />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
