@@ -13,8 +13,8 @@ const pageVariants = {
     transition: {
       when: "beforeChildren",
       type: "linear",
-      delay: 0.25,
-      duration: 0.5,
+      delay: 0.15,
+      duration: 0.3,
     },
   },
 };
@@ -32,7 +32,6 @@ export default function Template({ children }) {
       >
         {children}
       </motion.main>
-      ;
       <span
         className="w-1 fixed top-0 right-0 bottom-0 bg-primary transition-all duration-700 ease-in-out"
         style={{ transform: `translateY(${scrollProgress - 100}%)` }}

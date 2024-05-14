@@ -78,3 +78,7 @@
 .h4 {
   @apply font-bold;
 }
+
+::-webkit-scrollbar {
+  @apply hidden;
+}
