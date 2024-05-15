@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import useScrollProgress from "@/hooks/useScrollProgress";
 
-const pageVariants = {
+const templateVariants = {
   hidden: {
     opacity: 0,
   },
@@ -26,7 +26,7 @@ export default function Template({ children }) {
     <>
       <motion.main
         className="flex-1"
-        variants={pageVariants}
+        variants={templateVariants}
         initial="hidden"
         animate="enter"
       >

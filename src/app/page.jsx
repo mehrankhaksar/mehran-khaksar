@@ -156,20 +156,20 @@ export default function Home() {
                   <div className="group w-full h-[150px] relative rounded-xl overflow-hidden">
                     <Image
                       className="object-cover"
-                      src={`/projects/${item.category}.png`}
+                      src={`/projects/${item.category}.jpg`}
                       fill
                       sizes="100%"
                       priority
                       alt={item.name}
                     />
                     <div
-                      className="w-full h-full flex flex-col justify-end absolute -bottom-full left-0 text-secondary p-5 transition-all duration-300 ease-in-out group-hover:bottom-0 dark:text-secondary-foreground"
+                      className="w-full h-full flex flex-col justify-end absolute -bottom-full left-0 text-secondary p-2.5 transition-all duration-300 ease-in-out group-hover:bottom-0 dark:text-secondary-foreground"
                       style={{
                         background:
                           "linear-gradient(180deg, hsla(207, 25%, 50%, 0.25) 0%, hsla(207, 25%, 5%, 1) 100%)",
                       }}
                     >
-                      <h4 className="h4">{item.name}</h4>
+                      <h3 className="h3">{item.name}</h3>
                       <div className="flex items-center gap-1.5">
                         <a href={item.demo} target="_blank">
                           <Button
@@ -177,7 +177,7 @@ export default function Home() {
                             type="button"
                             size="icon"
                           >
-                            <RiLinksLine size={20} />
+                            <RiLinksLine size={17.5} />
                           </Button>
                         </a>
                         <a href={item.github} target="_blank">
@@ -186,7 +186,7 @@ export default function Home() {
                             type="button"
                             size="icon"
                           >
-                            <RiGithubLine size={20} />
+                            <RiGithubLine size={17.5} />
                           </Button>
                         </a>
                       </div>
