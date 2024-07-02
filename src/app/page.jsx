@@ -89,19 +89,25 @@ const projects = [
     category: "Next.JS",
     name: "Real Estate",
     demo: "https://mehran-khaksar-real-estate.vercel.app/",
-    github: "https://github.com/mehrankhaksar/next-real-estate",
+    github: "https://github.com/mehrankhaksar/real-estate",
+  },
+  {
+    category: "Next.JS",
+    name: "Ryan Davis Portfolio",
+    demo: "https://mehran-khaksar-ryan-davis-portfolio.vercel.app/",
+    github: "https://github.com/mehrankhaksar/ryan-davis-portfolio",
   },
   {
     category: "React.JS",
     name: "BotoBlog",
     demo: "https://mehran-khaksar-botoblog.vercel.app/",
-    github: "https://github.com/mehrankhaksar/react-botoblog",
+    github: "https://github.com/mehrankhaksar/botoblog",
   },
   {
-    category: "React.JS",
-    name: "Shopping Cart",
-    demo: "https://mehran-khaksar-shopping-cart.vercel.app/",
-    github: "https://github.com/mehrankhaksar/react-shopping-cart",
+    category: "HTML & CSS & JS",
+    name: "ZarinPal",
+    demo: "https://mehran-khaksar-zarinpal.vercel.app/",
+    github: "https://github.com/mehrankhaksar/zarinpal",
   },
 ];
 
@@ -141,7 +147,7 @@ export default function Home() {
           </TabsContent>
           <TabsContent value="projects">
             <motion.div
-              className="grid gap-4 sm:grid-cols-2"
+              className="grid gap-y-6 gap-x-3 sm:grid-cols-2"
               variants={tabContentVariants}
             >
               {projects.map((item, index) => (
@@ -150,7 +156,7 @@ export default function Home() {
                   variants={projectVariants}
                   key={index}
                 >
-                  <Badge className="absolute -top-4 -left-2 bg-yellow-500 my-1.5 hover:bg-yellow-600 z-10">
+                  <Badge className="absolute -top-4 -left-2 bg-yellow-500 my-1.5 hover:bg-yellow-600 z-10 dark:text-accent-foreground">
                     {item.category}
                   </Badge>
                   <div className="group w-full h-[150px] relative rounded-xl overflow-hidden">
