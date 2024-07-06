@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+
+import { motion } from "framer-motion";
 
 import { Button } from "./ui/button";
 
@@ -14,24 +18,43 @@ import {
 
 import ThemeToggler from "./ThemeToggler";
 
+const headerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  enter: {
+    opacity: 1,
+    transition: {
+      type: "linear",
+      delay: 0.15,
+      duration: 0.3,
+    },
+  },
+};
+
 const socials = [
   {
-    pathname: "#",
+    pathname: "https://instagram.com/mhrn_k.h",
     icon: <RiInstagramLine />,
   },
   {
-    pathname: "#",
+    pathname: "https://linkedin.com/in/mehrankhaksar",
     icon: <RiLinkedinBoxLine />,
   },
   {
-    pathname: "#",
+    pathname: "https://github.com/mehrankhaksar",
     icon: <RiGithubLine />,
   },
 ];
 
 const Header = () => {
   return (
-    <header className="pt-12">
+    <motion.header
+      className="pt-10"
+      variants={headerVariants}
+      initial="hidden"
+      animate="enter"
+    >
       <div className="max-w-fit mx-auto">
         <div className="flex flex-col items-center relative">
           <div className="absolute -top-5 -left-5">
@@ -58,6 +81,7 @@ const Header = () => {
               <Link
                 className="transition-colors hover:text-primary"
                 href={item.pathname}
+                target="_blank"
                 key={index}
               >
                 {item.icon}
@@ -75,7 +99,10 @@ const Header = () => {
               </Button>
             </a>
             <div className="flex items-center gap-1.5">
-              <a href="#">
+              <a
+                href="https://api.whatsapp.com/send?phone=989210126985&text=Hello, more information!"
+                target="_blank"
+              >
                 <Button
                   className="col-span-2 rounded-full"
                   variant="secondary"
@@ -85,7 +112,10 @@ const Header = () => {
                   <RiWhatsappLine />
                 </Button>
               </a>
-              <a href="#">
+              <a
+                href="https://join.skype.com/invite/OrWgXS3336LE"
+                target="_blank"
+              >
                 <Button
                   className="rounded-full"
                   variant="secondary"
@@ -99,7 +129,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 };
 
