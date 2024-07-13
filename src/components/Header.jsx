@@ -89,7 +89,7 @@ const Header = () => {
             ))}
           </div>
           <div className="flex items-center gap-3">
-            <a download="" href="">
+            <a download="" href="/header/Mehran Khaksar.pdf">
               <Button
                 className="flex items-center gap-1.5 text-lg font-semibold p-6 dark:text-secondary-foreground"
                 type="button"
