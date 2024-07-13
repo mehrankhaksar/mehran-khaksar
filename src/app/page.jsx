@@ -75,6 +75,10 @@ const skills = [
     level: "Advance",
   },
   {
+    skill: "shadcn/ui",
+    level: "Advance",
+  },
+  {
     skill: "MUI",
     level: "Intermediate",
   },
