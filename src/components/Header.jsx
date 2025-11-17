@@ -1,95 +1,62 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-
-import { motion } from "framer-motion";
-
 import { Button } from "./ui/button";
-
-import {
-  RiInstagramLine,
-  RiLinkedinBoxLine,
-  RiGithubLine,
-  RiDownloadLine,
-  RiWhatsappLine,
-  RiSkypeLine,
-} from "@remixicon/react";
-
+import { RiDownloadLine } from "@remixicon/react";
 import ThemeToggler from "./ThemeToggler";
+import { getProfile } from "@/services/profileService";
 
-const headerVariants = {
-  hidden: {
-    opacity: 0,
-  },
-  enter: {
-    opacity: 1,
-    transition: {
-      type: "linear",
-      delay: 0.15,
-      duration: 0.3,
-    },
-  },
-};
+export default async function Header() {
+  const { fullName, role, cv, profilePicture, socialMedias } =
+    await getProfile();
 
-const socials = [
-  {
-    pathname: "https://instagram.com/mhrn_k.h",
-    icon: <RiInstagramLine />,
-  },
-  {
-    pathname: "https://linkedin.com/in/mehrankhaksar",
-    icon: <RiLinkedinBoxLine />,
-  },
-  {
-    pathname: "https://github.com/mehrankhaksar",
-    icon: <RiGithubLine />,
-  },
-];
-
-const Header = () => {
   return (
-    <motion.header
-      className="pt-10"
-      variants={headerVariants}
-      initial="hidden"
-      animate="enter"
-    >
-      <div className="max-w-fit mx-auto">
+    <header className="pt-10" initial="hidden" animate="enter">
+      <div className="max-w-xs mx-auto">
         <div className="flex flex-col items-center relative">
           <div className="absolute -top-5 -left-5">
             <ThemeToggler />
           </div>
           <div className="flex flex-col items-center gap-2.5">
-            <div className="w-[185px] h-[185px] relative border-[3px] border-solid border-primary rounded-full">
+            <div className="size-[185px] relative border-[3px] border-solid border-primary rounded-full">
               <Image
                 className="object-cover p-0.5 rounded-full"
-                src="/header/Mehran Khaksar.jpg"
+                src={
+                  profilePicture?.url ||
+                  "https://placehold.co/185x185/png?text=Profile+Picture"
+                }
                 fill
                 sizes="100%"
                 priority
-                alt="Mehran Khaksar"
+                alt={fullName}
               />
             </div>
             <div className="text-center">
-              <h1 className="h1 !leading-none">Mehran Khaksar</h1>
-              <span className="font-medium">Front-End Developer</span>
+              <h1 className="h1 !leading-none">{fullName}</h1>
+              <span className="font-medium">{role}</span>
             </div>
           </div>
-          <div className="flex items-center gap-5 mt-2.5 mb-5">
-            {socials.map((item, index) => (
-              <Link
-                className="transition-colors hover:text-primary"
-                href={item.pathname}
-                target="_blank"
-                key={index}
-              >
-                {item.icon}
-              </Link>
-            ))}
+          <div className="flex items-center gap-2.5 mt-2.5 mb-5">
+            {socialMedias
+              .filter((socialMedia) => !socialMedia.isContact)
+              .map((socialMedia) => (
+                <Link
+                  href={socialMedia.pathname}
+                  target="_blank"
+                  key={socialMedia.pathname}
+                >
+                  <Image
+                    src={socialMedia.icon.url}
+                    width={25}
+                    height={25}
+                    sizes="25px"
+                    priority
+                    alt={socialMedia.name}
+                  />
+                </Link>
+              ))}
           </div>
           <div className="flex items-center gap-3">
-            <a download="" href="/header/Mehran Khaksar.pdf">
+            <a download="" href={cv.url} target="_blank">
               <Button
                 className="flex items-center gap-1.5 text-lg font-semibold p-6 dark:text-secondary-foreground"
                 type="button"
@@ -99,38 +66,35 @@ const Header = () => {
               </Button>
             </a>
             <div className="flex items-center gap-1.5">
-              <a
-                href="https://api.whatsapp.com/send?phone=989210126985&text=Hello, more information!"
-                target="_blank"
-              >
-                <Button
-                  className="col-span-2 rounded-full"
-                  variant="secondary"
-                  size="icon"
-                  type="button"
-                >
-                  <RiWhatsappLine />
-                </Button>
-              </a>
-              <a
-                href="https://join.skype.com/invite/OrWgXS3336LE"
-                target="_blank"
-              >
-                <Button
-                  className="rounded-full"
-                  variant="secondary"
-                  size="icon"
-                  type="button"
-                >
-                  <RiSkypeLine />
-                </Button>
-              </a>
+              {socialMedias
+                .filter((socialMedia) => socialMedia.isContact)
+                .map((socialMedia) => (
+                  <Link
+                    href={socialMedia.pathname}
+                    target="_blank"
+                    key={socialMedia.pathname}
+                  >
+                    <Button
+                      className="rounded-full"
+                      variant="secondary"
+                      size="icon"
+                      type="button"
+                    >
+                      <Image
+                        src={socialMedia.icon.url}
+                        width={25}
+                        height={25}
+                        sizes="25px"
+                        priority
+                        alt={socialMedia.name}
+                      />
+                    </Button>
+                  </Link>
+                ))}
             </div>
           </div>
         </div>
       </div>
-    </motion.header>
+    </header>
   );
-};
-
-export default Header;
+}
