@@ -1,119 +1,7 @@
-"use client";
-
-import Image from "next/image";
-
-import { motion } from "framer-motion";
-
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-
-import {
-  RiCheckboxCircleLine,
-  RiLinksLine,
-  RiGithubLine,
-} from "@remixicon/react";
-
-const tabContentVariants = {
-  hidden: {
-    opacity: 0,
-    y: 35,
-  },
-  enter: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      when: "beforeChildren",
-      staggerChildren: 0.25,
-      duration: 0.5,
-    },
-  },
-};
-
-const projectVariants = {
-  hidden: {
-    opacity: 0,
-  },
-  enter: {
-    opacity: 1,
-  },
-};
+import SkillList from "@/components/SkillList";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const tabs = ["skills", "projects"];
-
-const skills = [
-  {
-    skill: "HTML & CSS",
-    level: "Advance",
-  },
-  {
-    skill: "JavaScript",
-    level: "Basic",
-  },
-  {
-    skill: "React.JS",
-    level: "Advance",
-  },
-  {
-    skill: "Next.JS",
-    level: "Advance",
-  },
-  {
-    skill: "REST API",
-    level: "Advance",
-  },
-  {
-    skill: "GraphQL",
-    level: "Advance",
-  },
-  {
-    skill: "Redux & Redux Toolkit",
-    level: "Advance",
-  },
-  {
-    skill: "TailwindCSS",
-    level: "Advance",
-  },
-  {
-    skill: "shadcn/ui",
-    level: "Advance",
-  },
-  {
-    skill: "MUI",
-    level: "Intermediate",
-  },
-  {
-    skill: "Git & GitHub",
-    level: "Intermediate",
-  },
-];
-
-const projects = [
-  {
-    category: "Next.JS",
-    name: "Real Estate",
-    demo: "https://mehran-khaksar-real-estate.vercel.app/",
-    github: "https://github.com/mehrankhaksar/real-estate",
-  },
-  {
-    category: "Next.JS",
-    name: "Ryan Davis Portfolio",
-    demo: "https://mehran-khaksar-ryan-davis-portfolio.vercel.app/",
-    github: "https://github.com/mehrankhaksar/ryan-davis-portfolio",
-  },
-  {
-    category: "React.JS",
-    name: "BotoBlog",
-    demo: "https://mehran-khaksar-botoblog.vercel.app/",
-    github: "https://github.com/mehrankhaksar/botoblog",
-  },
-  {
-    category: "HTML & CSS & JS",
-    name: "ZarinPal",
-    demo: "https://mehran-khaksar-zarinpal.vercel.app/",
-    github: "https://github.com/mehrankhaksar/zarinpal",
-  },
-];
 
 export default function Home() {
   return (
@@ -131,24 +19,9 @@ export default function Home() {
           ))}
         </TabsList>
         <TabsContent value="skills">
-          <motion.div
-            className="max-w-fit grid grid-cols-2 sm:grid-cols-3 gap-5 mx-auto"
-            variants={tabContentVariants}
-          >
-            {skills.map((item, index) => (
-              <div className="flex gap-1.5" key={index}>
-                <RiCheckboxCircleLine className="text-primary" />
-                <div>
-                  <h4 className="h4 !leading-5">{item.skill}</h4>
-                  <span className="text-sm font-semibold text-muted-foreground">
-                    {item.level}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </motion.div>
+          <SkillList />
         </TabsContent>
-        <TabsContent value="projects">
+        {/* <TabsContent value="projects">
           <motion.div
             className="max-w-[300px] sm:max-w-[500px] grid gap-y-5 gap-x-2.5 mx-auto sm:grid-cols-2"
             variants={tabContentVariants}
@@ -204,7 +77,7 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
-        </TabsContent>
+        </TabsContent> */}
       </Tabs>
     </section>
   );
