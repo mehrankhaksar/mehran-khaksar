@@ -1,9 +1,5 @@
-import Head from "next/head";
-
 import ThemeProvider from "@/components/ThemeProvider";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
 import "./globals.css";
 
 export const metadata = {
@@ -17,8 +13,9 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen flex flex-col">
         <ThemeProvider defaultTheme="light" attribute="class">
-          <Header />
-          {children}
+          <main className="flex-1 w-full max-w-md mx-auto pt-5 px-2.5 sm:px-0">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>
