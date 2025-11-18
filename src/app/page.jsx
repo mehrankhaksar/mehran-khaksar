@@ -1,4 +1,5 @@
-import SkillList from "@/components/SkillList";
+import AnimatedTabs from "@/components/AnimatedTabs";
+import SkillList from "@/components/skill/SkillList";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const tabs = ["skills", "projects"];
@@ -7,17 +8,7 @@ export default function Home() {
   return (
     <section className="my-10 mx-5">
       <Tabs defaultValue="skills">
-        <TabsList className="max-w-[250px] h-fit grid grid-cols-2 gap-1 mx-auto mb-10">
-          {tabs.map((item, index) => (
-            <TabsTrigger
-              className="font-semibold capitalize py-4 px-8 hover:bg-background"
-              value={item}
-              key={index}
-            >
-              {item}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+        <AnimatedTabs tabs={tabs} />
         <TabsContent value="skills">
           <SkillList />
         </TabsContent>
