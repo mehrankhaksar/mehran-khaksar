@@ -36,7 +36,7 @@ export default function ProjectGallery({ gallery }) {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <Button size="icon" className="shrink-0">
+        <Button variant="secondary" size="icon" className="shrink-0">
           <RiFolderImageLine />
         </Button>
       </HoverCardTrigger>
@@ -56,7 +56,7 @@ export default function ProjectGallery({ gallery }) {
                   <PhotoView src={url}>
                     <figure className="h-56 shrink-0 relative rounded-lg overflow-hidden">
                       <Image
-                        className="object-cover"
+                        className="object-cover cursor-zoom-in"
                         src={
                           url ||
                           "https://placehold.co/320x200/png?text=Gallery+Picture"
