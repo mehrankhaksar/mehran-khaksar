@@ -12,6 +12,10 @@ const GET_PROJECTS = HygraphClient.gql(
       title
       summary
       liveLink
+      gallery {
+        fileName
+        url
+      }
     }
   }
 `

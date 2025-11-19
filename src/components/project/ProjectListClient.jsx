@@ -13,6 +13,7 @@ import {
 import { Button } from "../ui/button";
 import { RiFolderImageLine, RiGithubLine, RiLinksLine } from "@remixicon/react";
 import { ButtonGroup } from "../ui/button-group";
+import ProjectGallery from "./ProjectGallery";
 
 const list = {
   hidden: { opacity: 0 },
@@ -51,7 +52,10 @@ export default function ProjectListClient({ projectList = [] }) {
                 <figure className="h-56 xs:h-36 shrink-0 relative rounded-lg overflow-hidden">
                   <Image
                     className="object-cover"
-                    src={projectItem.image.url}
+                    src={
+                      projectItem.image.url ||
+                      "https://placehold.co/320x200/png?text=Project+Picture"
+                    }
                     fill
                     sizes="100%"
                     priority
@@ -64,9 +68,7 @@ export default function ProjectListClient({ projectList = [] }) {
                       <CardTitle className="text-lg font-bold leading-5 line-clamp-2">
                         {projectItem.title}
                       </CardTitle>
-                      <Button size="icon" className="shrink-0">
-                        <RiFolderImageLine />
-                      </Button>
+                      <ProjectGallery gallery={projectItem.gallery} />
                     </div>
                     <CardDescription className="line-clamp-4 text-justify">
                       {projectItem.summary}
