@@ -3,13 +3,14 @@ import HygraphClient from "@/lib/hygraph";
 const GET_PROJECTS = HygraphClient.gql(
   `
   query Projects {
-    projects(orderBy: publishedAt_DESC) {
-      images {
+    projects {
+      id
+      image {
         url
         fileName
       }
-      id
       title
+      summary
       liveLink
     }
   }

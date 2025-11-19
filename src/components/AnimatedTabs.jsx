@@ -8,7 +8,7 @@ export default function AnimatedTabs({ tabs }) {
   const [active, setActive] = useState("skills");
 
   return (
-    <TabsList className="max-w-[250px] h-fit grid grid-cols-2 mx-auto mb-10 p-2 bg-muted rounded-md">
+    <TabsList className="max-w-[250px] h-fit grid grid-cols-2 mx-auto mb-5 p-2 bg-muted rounded-md">
       {tabs.map((tab) => {
         const isActive = active === tab;
         return (

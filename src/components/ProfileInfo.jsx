@@ -11,7 +11,7 @@ export default async function ProfileInfo() {
 
   return (
     <section initial="hidden" animate="enter">
-      <div className="flex flex-col items-center relative">
+      <div className="max-w-md mx-auto flex flex-col items-center relative">
         <div className="absolute top-2.5 left-2.5">
           <ThemeToggler />
         </div>
