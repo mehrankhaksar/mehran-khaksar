@@ -15,14 +15,12 @@ const GET_PROFILE = HygraphClient.gql(
         url
       }
       role
-    socialMedias {
-        icon {
-            url
-        }
+      socialMedias {
+        slug
         pathname
         isContact
         name
-        }
+      }
     }
 }
 `

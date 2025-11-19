@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { RiDownloadLine } from "@remixicon/react";
 import ThemeToggler from "./ThemeToggler";
 import { getProfile } from "@/services/profileService";
+import { socialIconMap } from "@/constants/socialIcons";
 
 export default async function ProfileInfo() {
   const { fullName, role, cv, profilePicture, socialMedias } =
@@ -34,25 +35,26 @@ export default async function ProfileInfo() {
             <span className="font-medium">{role}</span>
           </div>
         </div>
-        <div className="flex items-center gap-2.5 mt-2.5 mb-5">
+        <div className="flex items-center gap-1.5 mt-2.5 mb-5">
           {socialMedias
             .filter((socialMedia) => !socialMedia.isContact)
-            .map((socialMedia) => (
-              <Link
-                href={socialMedia.pathname}
-                target="_blank"
-                key={socialMedia.pathname}
-              >
-                <Image
-                  src={socialMedia.icon.url}
-                  width={25}
-                  height={25}
-                  sizes="25px"
-                  priority
-                  alt={socialMedia.name}
-                />
-              </Link>
-            ))}
+            .map((socialMedia) => {
+              const Icon = socialIconMap[socialMedia.slug];
+
+              return (
+                <Button
+                  variant="secondary"
+                  className="rounded-full"
+                  size="icon"
+                  asChild
+                  key={socialMedia.pathname}
+                >
+                  <a href={socialMedia.pathname} target="_blank">
+                    <Icon />
+                  </a>
+                </Button>
+              );
+            })}
         </div>
         <div className="flex items-center gap-3">
           <a download="" href={cv.url} target="_blank">
@@ -67,29 +69,23 @@ export default async function ProfileInfo() {
           <div className="flex items-center gap-1.5">
             {socialMedias
               .filter((socialMedia) => socialMedia.isContact)
-              .map((socialMedia) => (
-                <Link
-                  href={socialMedia.pathname}
-                  target="_blank"
-                  key={socialMedia.pathname}
-                >
+              .map((socialMedia) => {
+                const Icon = socialIconMap[socialMedia.slug];
+
+                return (
                   <Button
+                    asChild
                     className="rounded-full"
                     variant="secondary"
                     size="icon"
-                    type="button"
+                    key={socialMedia.pathname}
                   >
-                    <Image
-                      src={socialMedia.icon.url}
-                      width={25}
-                      height={25}
-                      sizes="25px"
-                      priority
-                      alt={socialMedia.name}
-                    />
+                    <a href={socialMedia.pathname} target="_blank">
+                      <Icon />
+                    </a>
                   </Button>
-                </Link>
-              ))}
+                );
+              })}
           </div>
         </div>
       </div>
