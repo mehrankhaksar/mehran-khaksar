@@ -1,8 +1,3 @@
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
 import { Button } from "../ui/button";
 import { RiFolderImageLine } from "@remixicon/react";
 import {
@@ -17,6 +12,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { useEffect, useState } from "react";
 import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 export default function ProjectGallery({ gallery }) {
   const [api, setApi] = useState();
@@ -34,18 +30,21 @@ export default function ProjectGallery({ gallery }) {
   }, [api]);
 
   return (
-    <HoverCard>
-      <HoverCardTrigger asChild>
+    <Popover>
+      <PopoverTrigger asChild>
         <Button variant="secondary" size="icon" className="shrink-0">
           <RiFolderImageLine />
         </Button>
-      </HoverCardTrigger>
-      <HoverCardContent className="w-96">
+      </PopoverTrigger>
+      <PopoverContent className="w-96">
         <Carousel
           setApi={setApi}
+          opts={{
+            loop: true,
+          }}
           plugins={[
             Autoplay({
-              delay: 2000,
+              delay: 2500,
             }),
           ]}
         >
@@ -85,7 +84,7 @@ export default function ProjectGallery({ gallery }) {
             />
           ))}
         </div>
-      </HoverCardContent>
-    </HoverCard>
+      </PopoverContent>
+    </Popover>
   );
 }
