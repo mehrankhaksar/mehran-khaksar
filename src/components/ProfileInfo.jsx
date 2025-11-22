@@ -5,9 +5,10 @@ import { RiDownloadLine } from "@remixicon/react";
 import ThemeToggler from "./ThemeToggler";
 import { getProfile } from "@/services/profileService";
 import { socialIconMap } from "@/constants/socialIcons";
+import { RichText } from "@graphcms/rich-text-react-renderer";
 
 export default async function ProfileInfo() {
-  const { fullName, role, cv, profilePicture, socialMedias } =
+  const { fullName, role, cv, profilePicture, socialMedias, bio } =
     await getProfile();
 
   return (
@@ -35,7 +36,7 @@ export default async function ProfileInfo() {
             <span className="font-medium">{role}</span>
           </div>
         </div>
-        <div className="flex items-center gap-1.5 mt-2.5 mb-5">
+        <div className="flex items-center gap-1.5 mt-2.5">
           {socialMedias
             .filter((socialMedia) => !socialMedia.isContact)
             .map((socialMedia) => {
@@ -55,6 +56,18 @@ export default async function ProfileInfo() {
                 </Button>
               );
             })}
+        </div>
+        <div className="mt-2.5 mb-5">
+          <RichText
+            content={bio.raw}
+            renderers={{
+              p: ({ children }) => (
+                <p className="text-secondary-foreground text-center">
+                  {children}
+                </p>
+              ),
+            }}
+          />
         </div>
         <div className="flex items-center gap-3">
           <a download="" href={cv.url} target="_blank">
