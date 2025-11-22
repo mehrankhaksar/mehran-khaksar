@@ -1,4 +1,4 @@
-import AnimatedTabs from "@/components/AnimatedTabs";
+import SkillsProjectsTabs from "@/components/SkillsProjectsTabs";
 import ProfileInfo from "@/components/ProfileInfo";
 import ProjectList from "@/components/project/ProjectList";
 import SkillList from "@/components/skill/SkillList";
@@ -11,7 +11,7 @@ export default function Home() {
     <section className="space-y-5">
       <ProfileInfo />
       <Tabs defaultValue="skills">
-        <AnimatedTabs tabs={tabs} />
+        <SkillsProjectsTabs tabs={tabs} />
         <TabsContent value="skills">
           <SkillList />
         </TabsContent>
