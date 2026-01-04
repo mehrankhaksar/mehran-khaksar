@@ -51,7 +51,7 @@ export default async function ProfileInfo() {
                   key={socialMedia.pathname}
                 >
                   <a href={socialMedia.pathname} target="_blank">
-                    <Icon />
+                    <Icon className="!size-6" />
                   </a>
                 </Button>
               );
@@ -94,7 +94,7 @@ export default async function ProfileInfo() {
                     key={socialMedia.pathname}
                   >
                     <a href={socialMedia.pathname} target="_blank">
-                      <Icon />
+                      <Icon className="!size-6" />
                     </a>
                   </Button>
                 );
