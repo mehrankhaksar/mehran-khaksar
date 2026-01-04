@@ -13,7 +13,9 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen flex flex-col">
         <ThemeProvider defaultTheme="light" attribute="class">
-          <main className="flex-1 pt-5 pb-10 px-2.5 sm:px-0">{children}</main>
+          <main className="max-w-screen-lg mx-auto flex-1 pt-5 pb-10 px-5">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

@@ -16,9 +16,35 @@ const GET_PROJECTS = HygraphClient.gql(
         fileName
         url
       }
+      slug
     }
   }
 `
 );
 
-export { GET_PROJECTS };
+const GET_PROJECT = HygraphClient.gql(
+  `
+  query Project($slug: String!) {
+    project(where: { slug: $slug }) {
+      image {
+        url
+        fileName
+      }
+      title
+      technologies
+      liveLink
+      githubLink
+      summary
+      gallery {
+        url
+        fileName
+      }
+      content {
+        raw
+      }
+    }
+  }
+`
+);
+
+export { GET_PROJECTS, GET_PROJECT };
