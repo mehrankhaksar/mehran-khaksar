@@ -1,3 +1,4 @@
+import MediaSlider from "@/components/MediaSlider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
@@ -15,8 +16,16 @@ import Image from "next/image";
 
 export default async function ProjectDetails({ params }) {
   const { slug } = await params;
-  const { title, image, summary, technologies, liveLink, githubLink, content } =
-    await getProject(slug);
+  const {
+    title,
+    image,
+    summary,
+    technologies,
+    liveLink,
+    githubLink,
+    content,
+    gallery,
+  } = await getProject(slug);
 
   return (
     <section>
@@ -76,22 +85,23 @@ export default async function ProjectDetails({ params }) {
                 <h3 className="text-xl mb-2.5">{children}</h3>
               ),
               h4: ({ children }) => (
-                <h4 className="text-secondary-foreground">{children}</h4>
+                <h4 className="text-secondary-foreground mb-2.5">{children}</h4>
               ),
               p: ({ children }) => {
                 return (
-                  <p className="text-sm text-muted-foreground font-medium text-justify mb-5">
+                  <p className="text-sm text-muted-foreground font-medium text-justify mb-5 [&>b]:text-primary">
                     {children}
                   </p>
                 );
               },
               ul: ({ children }) => (
-                <ul className="-space-y-5 list-disc ml-10 marker:text-primary">
+                <ul className="list-disc ml-10 marker:text-primary">
                   {children}
                 </ul>
               ),
             }}
           />
+          {gallery.length ? <MediaSlider media={gallery} /> : null}
         </CardContent>
       </Card>
     </section>
