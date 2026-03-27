@@ -29,7 +29,7 @@ export default function MediaSlider({ media }) {
 
   const autoplay = Autoplay(
     { delay: 2500, stopOnInteraction: false },
-    (emblaRoot) => emblaRoot.parentElement
+    (emblaRoot) => emblaRoot.parentElement,
   );
 
   return (
@@ -52,7 +52,7 @@ export default function MediaSlider({ media }) {
             {media.map(({ url, fileName }, idx) => (
               <CarouselItem key={idx}>
                 <PhotoView src={url}>
-                  <figure className="h-56 shrink-0 relative rounded-lg overflow-hidden">
+                  <figure className="h-80 shrink-0 relative rounded-lg overflow-hidden">
                     <Image
                       className="object-cover cursor-zoom-in"
                       src={

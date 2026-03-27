@@ -9,10 +9,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { getProject } from "@/services/projectService";
 import { RichText } from "@graphcms/rich-text-react-renderer";
-import { RiGithubLine, RiLinksLine } from "@remixicon/react";
+import { RiArrowLeftSLine, RiGithubLine, RiLinksLine } from "@remixicon/react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function ProjectDetails({ params }) {
   const { slug } = await params;
@@ -31,6 +33,11 @@ export default async function ProjectDetails({ params }) {
     <section>
       <Card>
         <CardHeader className="p-3 sm:p-5 sm:flex-row gap-3">
+          <Button variant="outline" asChild size="icon" className="shrink-0">
+            <Link href="/">
+              <RiArrowLeftSLine />
+            </Link>
+          </Button>
           <figure className="h-52 xs:h-64 sm:h-52 md:h-60 lg:h-auto sm:w-1/2 lg:w-1/3 shrink-0 relative rounded-lg overflow-hidden">
             <Image
               className="object-cover"
@@ -60,14 +67,14 @@ export default async function ProjectDetails({ params }) {
             {liveLink || githubLink ? (
               <ButtonGroup className="self-end mt-auto">
                 {liveLink ? (
-                  <Button variant="outline" asChild size="icon">
+                  <Button asChild size="icon">
                     <a href={liveLink} target="_blank">
                       <RiLinksLine />
                     </a>
                   </Button>
                 ) : null}
                 {githubLink ? (
-                  <Button variant="outline" asChild size="icon">
+                  <Button variant="secondary" asChild size="icon">
                     <a href={githubLink} target="_blank">
                       <RiGithubLine />
                     </a>
@@ -101,6 +108,7 @@ export default async function ProjectDetails({ params }) {
               ),
             }}
           />
+          <Separator className="my-8" />
           {gallery.length ? <MediaSlider media={gallery} /> : null}
         </CardContent>
       </Card>

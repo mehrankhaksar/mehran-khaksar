@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Button } from "./ui/button";
 import { RiDownloadLine } from "@remixicon/react";
 import ThemeToggler from "./ThemeToggler";

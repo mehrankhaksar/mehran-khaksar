@@ -1,11 +1,11 @@
 import {
   RiGithubFill,
   RiLinkedinBoxFill,
-  RiWhatsappLine,
+  RiTelegram2Fill,
 } from "@remixicon/react";
 
 export const socialIconMap = {
   github: RiGithubFill,
   linkedin: RiLinkedinBoxFill,
-  whatsapp: RiWhatsappLine,
+  telegram: RiTelegram2Fill,
 };
