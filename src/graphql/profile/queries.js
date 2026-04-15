@@ -1,7 +1,6 @@
-import HygraphClient from "@/lib/hygraph";
+import { gql } from "graphql-request";
 
-const GET_PROFILE = HygraphClient.gql(
-  `
+const GET_PROFILE = gql`
   query Profile($id: ID!) {
     profile(where: { id: $id }) {
       bio {
@@ -22,8 +21,7 @@ const GET_PROFILE = HygraphClient.gql(
         name
       }
     }
-}
-`
-);
+  }
+`;
 
 export { GET_PROFILE };

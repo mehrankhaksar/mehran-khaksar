@@ -1,5 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
+
+import { motion } from "motion/react";
 import ProjectItem from "./ProjectItem";
 
 const list = {
@@ -14,17 +15,15 @@ const list = {
 
 export default function ProjectListClient({ projectList = [] }) {
   return (
-    <section>
-      <motion.div
-        variants={list}
-        initial="hidden"
-        animate="show"
-        className="max-w-xl mx-auto grid xs:grid-cols-2 gap-2.5"
-      >
-        {projectList.map((projectItem) => (
-          <ProjectItem {...projectItem} key={projectItem.id} />
-        ))}
-      </motion.div>
-    </section>
+    <motion.div
+      variants={list}
+      initial="hidden"
+      animate="show"
+      className="max-w-xl mx-auto grid xs:grid-cols-2 gap-2.5"
+    >
+      {projectList.map((projectItem) => (
+        <ProjectItem {...projectItem} key={projectItem.id} />
+      ))}
+    </motion.div>
   );
 }

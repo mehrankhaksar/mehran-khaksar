@@ -1,7 +1,6 @@
-import HygraphClient from "@/lib/hygraph";
+import { gql } from "graphql-request";
 
-const GET_PROJECTS = HygraphClient.gql(
-  `
+const GET_PROJECTS = gql`
   query Projects {
     projects {
       id
@@ -19,11 +18,9 @@ const GET_PROJECTS = HygraphClient.gql(
       slug
     }
   }
-`
-);
+`;
 
-const GET_PROJECT = HygraphClient.gql(
-  `
+const GET_PROJECT = gql`
   query Project($slug: String!) {
     project(where: { slug: $slug }) {
       image {
@@ -44,7 +41,6 @@ const GET_PROJECT = HygraphClient.gql(
       }
     }
   }
-`
-);
+`;
 
 export { GET_PROJECTS, GET_PROJECT };

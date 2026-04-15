@@ -1,15 +1,12 @@
-const { default: HygraphClient } = require("@/lib/hygraph");
+import { gql } from "graphql-request";
 
-const GET_SKILLS = HygraphClient.gql(
-  `
-    query Skills {
-        skills {
-            id
-            level
-            name
-        }
+const GET_SKILLS = gql`
+  query Skills {
+    skills(first: 100) {
+      id
+      level
+      name
     }
-  `
-);
-
+  }
+`;
 export { GET_SKILLS };
