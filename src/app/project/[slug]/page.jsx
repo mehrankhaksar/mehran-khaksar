@@ -15,9 +15,16 @@ import { RichText } from "@graphcms/rich-text-react-renderer";
 import { RiArrowLeftSLine, RiGithubLine, RiLinksLine } from "@remixicon/react";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default async function ProjectDetails({ params }) {
   const { slug } = await params;
+  const project = await getProject(slug);
+
+  if (!project) {
+    notFound();
+  }
+
   const {
     title,
     image,
@@ -27,7 +34,7 @@ export default async function ProjectDetails({ params }) {
     githubLink,
     content,
     gallery,
-  } = await getProject(slug);
+  } = project;
 
   return (
     <section>

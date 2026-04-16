@@ -13,7 +13,7 @@ const list = {
   },
 };
 
-export default function ProjectListClient({ projectList = [] }) {
+export default function ProjectListClient({ projects = [] }) {
   return (
     <motion.div
       variants={list}
@@ -21,8 +21,8 @@ export default function ProjectListClient({ projectList = [] }) {
       animate="show"
       className="max-w-xl mx-auto grid xs:grid-cols-2 gap-2.5"
     >
-      {projectList.map((projectItem) => (
-        <ProjectItem {...projectItem} key={projectItem.id} />
+      {projects.map((project) => (
+        <ProjectItem {...project} key={project.id} />
       ))}
     </motion.div>
   );
