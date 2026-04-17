@@ -39,7 +39,7 @@ export default function CertificationListClient({ certifications }) {
       variants={list}
       initial="hidden"
       animate="show"
-      className="w-[350px] space-y-2.5"
+      className="w-[300px] sm:w-[350px] space-y-2.5"
     >
       {certifications.map((certification) => {
         const hasMedia = Boolean(certification?.media?.url);

@@ -29,11 +29,16 @@ export default function Home() {
       <Tabs
         className="flex flex-col items-center gap-2.5"
         defaultValue="skills"
+        orientation="horizontal"
       >
         <TabsList>
           {tabs.map((tab) => {
             return (
-              <TabsTrigger key={tab.name} value={tab.name}>
+              <TabsTrigger
+                className="text-xs sm:text-sm font-semibold sm:font-normal"
+                key={tab.name}
+                value={tab.name}
+              >
                 {tab.icon}
                 <span className="capitalize">{tab.name}</span>
               </TabsTrigger>
