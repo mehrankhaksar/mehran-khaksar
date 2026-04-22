@@ -35,7 +35,13 @@ export default function ProjectItem({
   slug,
   liveLink,
   githubLink,
+  hasMoreDetails,
 }) {
+  const imageUrl =
+    image?.url || "https://placehold.co/320x200/png?text=Project+Picture";
+
+  const imageAlt = image?.fileName || "Project placeholder image";
+
   return (
     <motion.div variants={item}>
       <Card className="relative h-full">
@@ -43,14 +49,11 @@ export default function ProjectItem({
           <figure className="h-56 xs:h-36 shrink-0 relative rounded-lg overflow-hidden">
             <Image
               className="object-cover"
-              src={
-                image.url ||
-                "https://placehold.co/320x200/png?text=Project+Picture"
-              }
+              src={imageUrl}
               fill
               sizes="100%"
               priority
-              alt={image.fileName}
+              alt={imageAlt}
             />
           </figure>
           <div className="flex flex-col justify-between gap-5">
@@ -66,9 +69,11 @@ export default function ProjectItem({
               </CardDescription>
             </CardHeader>
             <CardFooter className="p-0 justify-end gap-2.5">
-              <Button asChild className="w-full">
-                <Link href={`/project/${slug}`}>Explore</Link>
-              </Button>
+              {hasMoreDetails ? (
+                <Button asChild className="w-full">
+                  <Link href={`/project/${slug}`}>Explore</Link>
+                </Button>
+              ) : null}
               {liveLink || githubLink ? (
                 <ButtonGroup>
                   {liveLink ? (

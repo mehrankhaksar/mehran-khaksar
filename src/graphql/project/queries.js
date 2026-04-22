@@ -11,11 +11,13 @@ const GET_PROJECTS = gql`
       title
       summary
       liveLink
+      githubLink
       gallery {
         fileName
         url
       }
       slug
+      hasMoreDetails
     }
   }
 `;
@@ -23,6 +25,7 @@ const GET_PROJECTS = gql`
 const GET_PROJECT = gql`
   query Project($slug: String!) {
     project(where: { slug: $slug }) {
+      hasMoreDetails
       image {
         url
         fileName

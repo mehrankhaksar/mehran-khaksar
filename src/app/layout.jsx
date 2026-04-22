@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col" suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col">
         <ThemeProvider defaultTheme="light" attribute="class">
           <main className="max-w-screen-lg mx-auto flex-1 pt-5 pb-10 px-5">
             {children}

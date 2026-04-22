@@ -1,5 +1,5 @@
 import MediaSlider from "@/components/MediaSlider";
-import { Badge } from "@/components/ui/badge";
+import TechnologyList from "@/components/project/TechnologyList";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import {
@@ -23,6 +23,10 @@ export default async function ProjectDetails({ params }) {
 
   if (!project) {
     notFound();
+  }
+
+  if (!project.hasMoreDetails) {
+    redirect("/");
   }
 
   const {
@@ -64,13 +68,7 @@ export default async function ProjectDetails({ params }) {
             <CardDescription className="text-justify">
               {summary}
             </CardDescription>
-            <ul className="max-w-xs flex flex-wrap gap-1.5">
-              {technologies.map((technology) => (
-                <li key={technology}>
-                  <Badge variant="secondary">{technology}</Badge>
-                </li>
-              ))}
-            </ul>
+            <TechnologyList technologies={technologies} />
             {liveLink || githubLink ? (
               <ButtonGroup className="self-end mt-auto">
                 {liveLink ? (
